@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import "./css/SearchForm.css";
+import CityDiv from "./CityDiv";
 
 export default class SearchForm extends Component {
 	//TODO: Add a small box under the search bar which will show all cities from search results
@@ -51,7 +52,7 @@ export default class SearchForm extends Component {
 
 				<div className="matching-cities" id="temp">
 					{this.state.matchingCities.map(city => (
-						<p>{city.name}</p>
+						<CityDiv cityName={city.name} country={city.country} countryCode={city.countryCode} />
 					))}
 				</div>
 			</div>

@@ -13,8 +13,8 @@
 
 .matching-cities {
 	background-color: white;
-	margin: 25px 0px;
-	height: 250px;
+	margin: 45px 0px;
+	height: 450px;
 	/* height: 100%; */
 	overflow: auto;
 }
