@@ -1,0 +1,11 @@
+.search-field {
+	outline: none;
+	padding: 15px;
+}
+
+.search-button {
+	position: relative;
+	padding: 5px;
+	top: 8px;
+	cursor: pointer;
+}
