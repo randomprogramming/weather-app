@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "../App.css";
+import SearchForm from "./SearchForm";
 
 export default class WeatherInfo extends Component {
 	constructor() {
@@ -18,6 +19,7 @@ export default class WeatherInfo extends Component {
 		//Get the country and city name from the url
 		const countryName = this.props.match.params.countryName;
 		const cityName = this.props.match.params.cityName;
+
 		this.setState({
 			cityName,
 			countryName
@@ -37,9 +39,7 @@ export default class WeatherInfo extends Component {
 				</div>
 
 				<div className="flex-horizontal">
-					<div>
-						<h1>Search field here</h1>
-					</div>
+					<SearchForm></SearchForm>
 					<div>
 						<h1>Hourly weather here</h1>
 					</div>

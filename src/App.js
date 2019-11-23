@@ -8,9 +8,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>
-					<Route path="/:countryName/:cityName" component={WeatherInfo} />
-				</div>
+				<Route path="/:countryName/:cityName" component={WeatherInfo} />
 			</Router>
 		);
 	}
