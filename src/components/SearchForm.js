@@ -37,10 +37,13 @@ export default class SearchForm extends Component {
 		};
 	}
 	searchFieldOnUpdate = event => {
-		this.setState({
-			searchFieldValue: event.target.value,
-		});
+		//When the text field updates, this method is called
+		//Since setState is async, we have to wait for it to finish storing the value into the state,
+		//and after the value is stored in state, we call the searchCities method
+		//ALSO IMPORTANT: don't put the () after searchCities or else it won't work
+		this.setState({ searchFieldValue: event.target.value }, this.searchCities);
 	};
+
 	searchCities = () => {
 		//TODO: Update the cities array in the state when button pressed, search for all cities that match
 		//the one that is in the input text
@@ -50,7 +53,7 @@ export default class SearchForm extends Component {
 				city.country.toLowerCase().includes(this.state.searchFieldValue.toLowerCase())
 		);
 		this.setState({
-			matchingCities: temp,
+			matchingCities: this.state.searchFieldValue === "" ? [] : temp,
 		});
 	};
 	//TODO: Create an actual component instead of using a div with a p tag below
@@ -58,6 +61,7 @@ export default class SearchForm extends Component {
 		return (
 			<div className="search-form">
 				<input
+					id="teste"
 					className="search-field"
 					onChange={this.searchFieldOnUpdate.bind(this)}
 					type="text"
