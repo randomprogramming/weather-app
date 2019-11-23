@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 
 export default class CityDiv extends Component {
+	getRedirectUrl = () => {
+		return "/" + this.props.countryCode + "/" + this.props.cityName;
+	};
 	render() {
+		const { cityName, country, countryCode } = this.props;
 		return (
 			<div>
-				<span>
-					{this.props.cityName} {this.props.country} {this.props.countryCode}
-				</span>
+				<a href={this.getRedirectUrl()}>
+					{cityName} {country} {countryCode}
+				</a>
 			</div>
 		);
 	}

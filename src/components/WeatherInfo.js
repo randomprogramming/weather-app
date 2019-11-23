@@ -9,7 +9,7 @@ export default class WeatherInfo extends Component {
 		//TODO: Maybe add the weather info to the state aswell, make this a bit neater
 		this.state = {
 			cityName: "",
-			countryName: ""
+			country: "",
 		};
 	}
 
@@ -17,12 +17,12 @@ export default class WeatherInfo extends Component {
 		//TODO: Fetch all weawther data of the city
 
 		//Get the country and city name from the url
-		const countryName = this.props.match.params.countryName;
+		const country = this.props.match.params.country;
 		const cityName = this.props.match.params.cityName;
 
 		this.setState({
 			cityName,
-			countryName
+			country,
 		});
 	}
 
