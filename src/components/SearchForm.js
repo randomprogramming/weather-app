@@ -6,12 +6,12 @@ import "./css/SearchForm.css";
 import CityDiv from "./CityDiv";
 
 export default class SearchForm extends Component {
-	//TODO: Add a small box under the search bar which will show all cities from search results
+	//TODO: Find a better way of storing allCities, this will probably get very laggy after adding loads of cities
 	constructor() {
 		super();
 		this.state = {
 			searchFieldValue: "",
-			matchingCities: [
+			allCities: [
 				{
 					name: "Zagreb",
 					country: "Croatia",
@@ -22,7 +22,18 @@ export default class SearchForm extends Component {
 					country: "Croatia",
 					countryCode: "HR",
 				},
+				{
+					name: "Paris",
+					country: "France",
+					countryCode: "FR",
+				},
+				{
+					name: "Dubrovnik",
+					country: "Croatia",
+					countryCode: "HR",
+				},
 			],
+			matchingCities: [],
 		};
 	}
 	searchFieldOnUpdate = event => {
@@ -33,7 +44,14 @@ export default class SearchForm extends Component {
 	searchCities = () => {
 		//TODO: Update the cities array in the state when button pressed, search for all cities that match
 		//the one that is in the input text
-		console.log(this.state.searchFieldValue);
+		let temp = this.state.allCities.filter(
+			city =>
+				city.name.toLowerCase().includes(this.state.searchFieldValue.toLowerCase()) ||
+				city.country.toLowerCase().includes(this.state.searchFieldValue.toLowerCase())
+		);
+		this.setState({
+			matchingCities: temp,
+		});
 	};
 	//TODO: Create an actual component instead of using a div with a p tag below
 	render() {
@@ -50,9 +68,14 @@ export default class SearchForm extends Component {
 					<FontAwesomeIcon icon={faSearch} color="white" size="2x" />
 				</span>
 
-				<div className="matching-cities" id="temp">
+				<div className="matching-cities">
 					{this.state.matchingCities.map(city => (
-						<CityDiv cityName={city.name} country={city.country} countryCode={city.countryCode} />
+						<CityDiv
+							key={city.name}
+							cityName={city.name}
+							country={city.country}
+							countryCode={city.countryCode}
+						/>
 					))}
 				</div>
 			</div>
