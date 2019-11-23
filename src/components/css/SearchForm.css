@@ -10,3 +10,11 @@
 	top: 8px;
 	cursor: pointer;
 }
+
+.matching-cities {
+	background-color: white;
+	margin: 25px 0px;
+	height: 250px;
+	/* height: 100%; */
+	overflow: auto;
+}

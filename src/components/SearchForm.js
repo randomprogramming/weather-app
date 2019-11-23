@@ -9,30 +9,51 @@ export default class SearchForm extends Component {
 	constructor() {
 		super();
 		this.state = {
-			searchFieldValue: ""
+			searchFieldValue: "",
+			matchingCities: [
+				{
+					name: "Zagreb",
+					country: "Croatia",
+					countryCode: "HR",
+				},
+				{
+					name: "Split",
+					country: "Croatia",
+					countryCode: "HR",
+				},
+			],
 		};
 	}
 	searchFieldOnUpdate = event => {
 		this.setState({
-			searchFieldValue: event.target.value
+			searchFieldValue: event.target.value,
 		});
 	};
 	searchCities = () => {
+		//TODO: Update the cities array in the state when button pressed, search for all cities that match
+		//the one that is in the input text
 		console.log(this.state.searchFieldValue);
 	};
-
+	//TODO: Create an actual component instead of using a div with a p tag below
 	render() {
 		return (
-			<div>
+			<div className="search-form">
 				<input
 					className="search-field"
 					onChange={this.searchFieldOnUpdate.bind(this)}
 					type="text"
 					placeholder="Search for your city..."
 				></input>
+
 				<span className="search-button" onClick={this.searchCities.bind(this)}>
 					<FontAwesomeIcon icon={faSearch} color="white" size="2x" />
 				</span>
+
+				<div className="matching-cities" id="temp">
+					{this.state.matchingCities.map(city => (
+						<p>{city.name}</p>
+					))}
+				</div>
 			</div>
 		);
 	}

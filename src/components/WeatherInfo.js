@@ -39,11 +39,11 @@ export default class WeatherInfo extends Component {
 				</div>
 
 				<div className="flex-horizontal">
-					<SearchForm></SearchForm>
-					<div>
+					<SearchForm className="flexcomp"></SearchForm>
+					<div className="flexcomp">
 						<h1>Hourly weather here</h1>
 					</div>
-					<div>
+					<div className="flexcomp">
 						<h1>Daily weather here</h1>
 					</div>
 				</div>
