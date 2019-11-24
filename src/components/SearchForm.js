@@ -32,6 +32,21 @@ export default class SearchForm extends Component {
 					country: "Croatia",
 					countryCode: "HR",
 				},
+				{
+					name: "Madrid",
+					country: "Spain",
+					countryCode: "ES",
+				},
+				{
+					name: "London",
+					country: "United Kingdom",
+					countryCode: "GB",
+				},
+				{
+					name: "Berlin",
+					country: "Germany",
+					countryCode: "DE",
+				},
 			],
 			matchingCities: [],
 		};
