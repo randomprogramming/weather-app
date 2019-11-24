@@ -47,19 +47,20 @@ export default class SearchForm extends Component {
 	searchCities = () => {
 		//TODO: Update the cities array in the state when button pressed, search for all cities that match
 		//the one that is in the input text
-		let temp = this.state.allCities.filter(
+		let matching = this.state.allCities.filter(
 			city =>
 				city.name.toLowerCase().includes(this.state.searchFieldValue.toLowerCase()) ||
 				city.country.toLowerCase().includes(this.state.searchFieldValue.toLowerCase())
 		);
 		this.setState({
-			matchingCities: this.state.searchFieldValue === "" ? [] : temp,
+			matchingCities: this.state.searchFieldValue === "" ? [] : matching,
 		});
 	};
-	//TODO: Create an actual component instead of using a div with a p tag below
 	render() {
 		return (
 			<div className="search-form">
+				{/* This is the actual search input text, on update call searchFieldOnUpdate, which updates
+				the state and also updates the div with the cities that match the search term */}
 				<input
 					className="search-field"
 					onChange={this.searchFieldOnUpdate.bind(this)}
@@ -71,6 +72,7 @@ export default class SearchForm extends Component {
 					<FontAwesomeIcon icon={faSearch} color="white" size="2x" />
 				</span>
 
+				{/* Show the matching cities in this div, for each matching city create a CityDiv Component */}
 				<div className="matching-cities">
 					{this.state.matchingCities.map(city => (
 						<CityDiv
