@@ -4,6 +4,7 @@ import "../App.css";
 import SearchForm from "./SearchForm";
 import Hourly from "./Hourly";
 import Daily from "./Daily";
+import CurrentTemperature from "./CurrentTemperature";
 
 export default class WeatherInfo extends Component {
 	constructor() {
@@ -12,20 +13,38 @@ export default class WeatherInfo extends Component {
 		this.state = {
 			cityName: "",
 			country: "",
+			countryCode: "",
+			temperature: 0,
 		};
 	}
 
 	componentDidMount() {
 		//TODO: Fetch all weawther data of the city
 
-		//Get the country and city name from the url
-		const country = this.props.match.params.country;
+		//Get the country code and city name from the url
+		const countryCode = this.props.match.params.countryCode;
 		const cityName = this.props.match.params.cityName;
+		this.setState(
+			{
+				cityName,
+				countryCode,
+			},
+			this.getCurrentTemperature
+		);
+		//when the state has been set, we call getCurrentTemperature
+	}
 
-		this.setState({
-			cityName,
-			country,
-		});
+	async getCurrentTemperature() {
+		//Make a call to the OWM api and set the state temperature to the value that we got as a response
+		await fetch(
+			"http://api.openweathermap.org/data/2.5/weather?q=" +
+				this.state.cityName +
+				"," +
+				this.state.countryCode +
+				"&APPID=8e6683aa718a7f7300409b4eaf7a2bf7"
+		)
+			.then(resp => resp.json())
+			.then(data => this.setState({ temperature: Math.round(data.main.temp - 273.15) }));
 	}
 
 	render() {
@@ -37,13 +56,12 @@ export default class WeatherInfo extends Component {
 			<div>
 				<div className="centered-horizontal">
 					<p className="city-name">{this.state.cityName}</p>
-					<p className="city-temperature">15</p>
+					<CurrentTemperature temperature={this.state.temperature}></CurrentTemperature>
 				</div>
-
 				<div className="flex-horizontal">
 					<SearchForm></SearchForm>
-					<Hourly cityName={this.state.cityName} country={this.state.country}></Hourly>
-					<Daily cityName={this.state.cityName} country={this.state.country}></Daily>
+					<Hourly cityName={this.state.cityName} country={this.state.countryCode}></Hourly>
+					<Daily cityName={this.state.cityName} country={this.state.countryCode}></Daily>
 				</div>
 			</div>
 		);

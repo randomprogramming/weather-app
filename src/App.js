@@ -10,7 +10,7 @@ export default class App extends Component {
 		//on that url, and then we grab the city name and country from the url in that component
 		return (
 			<Router>
-				<Route path="/:countryName/:cityName" component={WeatherInfo} />
+				<Route path="/:countryCode/:cityName" component={WeatherInfo} />
 			</Router>
 		);
 	}
