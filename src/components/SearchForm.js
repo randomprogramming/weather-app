@@ -61,7 +61,6 @@ export default class SearchForm extends Component {
 		return (
 			<div className="search-form">
 				<input
-					id="teste"
 					className="search-field"
 					onChange={this.searchFieldOnUpdate.bind(this)}
 					type="text"

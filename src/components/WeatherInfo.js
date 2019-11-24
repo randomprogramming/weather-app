@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "../App.css";
 import SearchForm from "./SearchForm";
+import Hourly from "./Hourly";
 
 export default class WeatherInfo extends Component {
 	constructor() {
@@ -39,11 +40,9 @@ export default class WeatherInfo extends Component {
 				</div>
 
 				<div className="flex-horizontal">
-					<SearchForm className="flexcomp"></SearchForm>
-					<div className="flexcomp">
-						<h1>Hourly weather here</h1>
-					</div>
-					<div className="flexcomp">
+					<SearchForm></SearchForm>
+					<Hourly cityName={this.state.cityName} country={this.state.country}></Hourly>
+					<div>
 						<h1>Daily weather here</h1>
 					</div>
 				</div>
