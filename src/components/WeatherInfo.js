@@ -36,6 +36,7 @@ export default class WeatherInfo extends Component {
 
 	async getCurrentTemperature() {
 		//Make a call to the OWM api and set the state temperature to the value that we got as a response
+		//Since the returned value is in Kelvin, turn it into Celsius and then put it in the state
 		await fetch(
 			"http://api.openweathermap.org/data/2.5/weather?q=" +
 				this.state.cityName +
