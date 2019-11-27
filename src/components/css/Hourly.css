@@ -1,0 +1,9 @@
+.hourly-container {
+	border-left: 3px solid white;
+	border-right: 3px solid white;
+	padding: 25px;
+	margin: -25px;
+}
+
+.hourly-div {
+}

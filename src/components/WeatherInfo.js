@@ -15,6 +15,7 @@ export default class WeatherInfo extends Component {
 			country: "",
 			countryCode: "",
 			temperature: 0,
+			hourlyWeather: [],
 		};
 	}
 
@@ -45,7 +46,29 @@ export default class WeatherInfo extends Component {
 				"&APPID=8e6683aa718a7f7300409b4eaf7a2bf7"
 		)
 			.then(resp => resp.json())
-			.then(data => this.setState({ temperature: Math.round(data.main.temp - 273.15) }));
+			.then(data =>
+				this.setState(
+					{
+						temperature: Math.round(data.main.temp - 273.15),
+					},
+					this.getHourlyWeather
+				)
+			);
+	}
+
+	async getHourlyWeather() {
+		let hourlyWeater = [];
+		await fetch(
+			"https://api.openweathermap.org/data/2.5/forecast?q=" +
+				this.state.cityName +
+				"," +
+				this.state.countryCode +
+				"&appid=8e6683aa718a7f7300409b4eaf7a2bf7"
+		)
+			.then(resp => resp.json())
+			.then(data => {
+				this.setState({ hourlyWeater: data.list });
+			});
 	}
 
 	render() {
