@@ -3,7 +3,7 @@
 	border-right: 3px solid white;
 	padding: 25px;
 	margin: -25px;
-}
-
-.hourly-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }

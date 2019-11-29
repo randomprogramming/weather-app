@@ -57,7 +57,7 @@ export default class WeatherInfo extends Component {
 	}
 
 	async getHourlyWeather() {
-		let hourlyWeater = [];
+		//Get the hourly weather status from the OWM API and store it in the state
 		await fetch(
 			"https://api.openweathermap.org/data/2.5/forecast?q=" +
 				this.state.cityName +
@@ -67,8 +67,33 @@ export default class WeatherInfo extends Component {
 		)
 			.then(resp => resp.json())
 			.then(data => {
-				this.setState({ hourlyWeater: data.list });
+				this.setState({ hourlyWeather: data.list });
 			});
+
+		this.cutHourlyWeather();
+	}
+
+	cutHourlyWeather() {
+		//The OWM API gives us the hourly weather for the next couple of days, so we want to cut most of them
+		//We want to reduce the amount of arrays to 6, maybe change this later
+		const maxContainers = 6;
+
+		let temp = [];
+		for (let i = 0; i < maxContainers; i++) {
+			this.editHourlyWeatherDT(this.state.hourlyWeather[i]);
+			temp.push(this.state.hourlyWeather[i]);
+		}
+		this.setState({
+			hourlyWeather: temp,
+		});
+	}
+
+	editHourlyWeatherDT(hourlyState) {
+		//The API gives us a dt_txt attribute, which holds the date and time of that hourly weather
+		//We only need the time, so we cut the date and set the new dt_txt to only the time in hours(24h format)
+		let temp = hourlyState.dt_txt.split(" ");
+		temp = temp[1].split(":");
+		hourlyState.dt_txt = temp[0];
 	}
 
 	render() {
@@ -84,8 +109,8 @@ export default class WeatherInfo extends Component {
 				</div>
 				<div className="flex-horizontal">
 					<SearchForm></SearchForm>
-					<Hourly cityName={this.state.cityName} country={this.state.countryCode}></Hourly>
-					<Daily cityName={this.state.cityName} country={this.state.countryCode}></Daily>
+					<Hourly temperatures={this.state.hourlyWeather}></Hourly>
+					<Daily></Daily>
 				</div>
 			</div>
 		);
