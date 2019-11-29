@@ -21,9 +21,10 @@
 .city-div {
 	height: 50px;
 	border-bottom: 3px solid rgb(62, 56, 146);
+	cursor: pointer;
 }
 
-.city-a {
+.city-span {
 	position: relative;
 	top: 15px;
 	left: 5%;
