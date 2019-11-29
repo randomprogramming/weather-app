@@ -46,6 +46,7 @@ export default class HourlyDiv extends Component {
 		};
 	}
 	getImageFor(weatherType) {
+		//find the image which matches the weatherType and return it
 		for (let i = 0; i < this.state.pictures.length; i++) {
 			if (this.state.pictures[i].name === weatherType) {
 				return this.state.pictures[i].pic;
@@ -56,9 +57,13 @@ export default class HourlyDiv extends Component {
 	render() {
 		return (
 			<div className="hourly-div">
-				{this.props.time}
-				{/* <span>7&deg;</span> */}
-				<img src={this.getImageFor(this.props.weatherType)} alt="weather type"></img>
+				<span className="weather-time">{this.props.time}h</span>
+				<img
+					className="weatherType-image"
+					src={this.getImageFor(this.props.weatherType)}
+					alt="weather type"
+				></img>
+				<span className="weather-temperature">7&deg;</span>
 			</div>
 		);
 	}

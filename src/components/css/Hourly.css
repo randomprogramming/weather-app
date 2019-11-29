@@ -1,9 +1,25 @@
 .hourly-container {
 	border-left: 3px solid white;
 	border-right: 3px solid white;
-	padding: 25px;
+	padding: 0px 25px;
 	margin: -25px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+}
+
+.weatherType-image {
+	padding: 0px 10px;
+	position: relative;
+	top: 5px;
+}
+
+.weather-time {
+	font-size: xx-large;
+	color: white;
+	font-style: italic;
+}
+
+.weather-temperature {
+	color: white;
 }

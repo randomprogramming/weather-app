@@ -76,7 +76,7 @@ export default class WeatherInfo extends Component {
 	cutHourlyWeather() {
 		//The OWM API gives us the hourly weather for the next couple of days, so we want to cut most of them
 		//We want to reduce the amount of arrays to 6, maybe change this later
-		const maxContainers = 6;
+		const maxContainers = 7;
 
 		let temp = [];
 		for (let i = 0; i < maxContainers; i++) {
