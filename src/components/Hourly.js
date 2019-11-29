@@ -8,7 +8,11 @@ export default class Hourly extends Component {
 		return (
 			<div className="hourly-container">
 				{this.props.temperatures.map(hourly => (
-					<HourlyDiv time={hourly.dt_txt} weatherType={hourly.weather[0].main} />
+					<HourlyDiv
+						time={hourly.dt_txt}
+						weatherType={hourly.weather[0].main}
+						weatherTemperature={hourly.main.temp}
+					/>
 				))}
 			</div>
 		);

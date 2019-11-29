@@ -53,6 +53,9 @@ export default class HourlyDiv extends Component {
 			}
 		}
 	}
+	getCelsius(kelvin) {
+		return Math.round(kelvin - 273.15);
+	}
 
 	render() {
 		return (
@@ -63,7 +66,9 @@ export default class HourlyDiv extends Component {
 					src={this.getImageFor(this.props.weatherType)}
 					alt="weather type"
 				></img>
-				<span className="weather-temperature">7&deg;</span>
+				<span className="weather-temperature">
+					{this.getCelsius(this.props.weatherTemperature)}&deg;
+				</span>
 			</div>
 		);
 	}

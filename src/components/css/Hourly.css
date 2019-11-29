@@ -15,11 +15,12 @@
 }
 
 .weather-time {
-	font-size: xx-large;
+	font-size: 28px;
 	color: white;
 	font-style: italic;
 }
 
 .weather-temperature {
+	font-size: 28px;
 	color: white;
 }
