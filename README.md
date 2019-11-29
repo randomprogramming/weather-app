@@ -2,7 +2,8 @@
 
 ![Weather app](https://i.imgur.com/4lZjBoN.png)
 
-This web app written in React can show you the weather for any city
+This web app written in React can show you the weather for any city using the [OpenWeatherMapAPI](https://openweathermap.org/api).
+The "Daily weather" is currently a paid feature, so I can not implement it here.
 
 Currently has no home page, so you will not be able to access it with localhost:3000
 
