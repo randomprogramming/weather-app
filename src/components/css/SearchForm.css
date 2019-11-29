@@ -16,6 +16,7 @@
 	margin: 45px 0px;
 	height: 450px;
 	overflow: auto;
+	box-shadow: 13px 13px rgba(0, 0, 0, 0.15);
 }
 
 .city-div {
