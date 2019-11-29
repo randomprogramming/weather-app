@@ -1,5 +1,7 @@
 # Weather app
 
+![Weather app](https://i.imgur.com/4lZjBoN.png)
+
 This web app written in React can show you the weather for any city
 
 Currently has no home page, so you will not be able to access it with localhost:3000
