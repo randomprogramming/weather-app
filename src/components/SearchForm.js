@@ -60,8 +60,6 @@ export default class SearchForm extends Component {
 	};
 
 	searchCities = () => {
-		//TODO: Update the cities array in the state when button pressed, search for all cities that match
-		//the one that is in the input text
 		let matching = this.state.allCities.filter(
 			city =>
 				city.name.toLowerCase().includes(this.state.searchFieldValue.toLowerCase()) ||
